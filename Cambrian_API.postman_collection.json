@@ -1,0 +1,475 @@
+{
+  "info": {
+    "name": "Cambrian API - Solana DeFi Analytics",
+    "description": "Complete collection for testing Cambrian API endpoints. Covers token research, price data, portfolio tracking, and pool analysis.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-KEY",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{api_key}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://opabinia.cambrian.network/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "api_key",
+      "value": "your_api_key_here",
+      "type": "string"
+    },
+    {
+      "key": "sol_address",
+      "value": "So11111111111111111111111111111111111111112",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🏁 Basic Connectivity",
+      "item": [
+        {
+          "name": "Latest Block",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/latest-block",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "latest-block"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🔥 Token Discovery",
+      "item": [
+        {
+          "name": "Trending Tokens by Volume",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/trending-tokens?order_by=volume_usd_24h&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "trending-tokens"],
+              "query": [
+                {
+                  "key": "order_by",
+                  "value": "volume_usd_24h"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Trending Tokens by Price Change",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/trending-tokens?order_by=price_change_24h&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "trending-tokens"],
+              "query": [
+                {
+                  "key": "order_by",
+                  "value": "price_change_24h"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "All Tokens List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/tokens?limit=50&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "tokens"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SOL Token Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/token-details?token_address={{sol_address}}",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "token-details"],
+              "query": [
+                {
+                  "key": "token_address",
+                  "value": "{{sol_address}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "💰 Price Data",
+      "item": [
+        {
+          "name": "SOL Current Price",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/price-current?token_address={{sol_address}}",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "price-current"],
+              "query": [
+                {
+                  "key": "token_address",
+                  "value": "{{sol_address}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Multiple Token Prices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/price-multi?token_addresses={{sol_address}},27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "price-multi"],
+              "query": [
+                {
+                  "key": "token_addresses",
+                  "value": "{{sol_address}},27G8MtK7VtTcCHkpASjSDdkWWYfoqT6ggEuKidVJidD4"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SOL Price History (24h)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/price-hour?token_address={{sol_address}}&hours_back=24",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "price-hour"],
+              "query": [
+                {
+                  "key": "token_address",
+                  "value": "{{sol_address}}"
+                },
+                {
+                  "key": "hours_back",
+                  "value": "24"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OHLCV Candlestick Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/ohlcv/token?token_address={{sol_address}}&timeframe=1h&limit=24",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "ohlcv", "token"],
+              "query": [
+                {
+                  "key": "token_address",
+                  "value": "{{sol_address}}"
+                },
+                {
+                  "key": "timeframe",
+                  "value": "1h"
+                },
+                {
+                  "key": "limit",
+                  "value": "24"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "👛 Portfolio Management",
+      "item": [
+        {
+          "name": "Wallet Token Balances",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/holder-token-balances?holder=WALLET_ADDRESS_HERE&limit=20",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "holder-token-balances"],
+              "query": [
+                {
+                  "key": "holder",
+                  "value": "WALLET_ADDRESS_HERE",
+                  "description": "Replace with actual wallet address"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Wallet Balance History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/wallet-balance-history?wallet_address=WALLET_ADDRESS_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "wallet-balance-history"],
+              "query": [
+                {
+                  "key": "wallet_address",
+                  "value": "WALLET_ADDRESS_HERE",
+                  "description": "Replace with actual wallet address"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📊 Trading Analysis",
+      "item": [
+        {
+          "name": "SOL Trade Statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/trade-statistics?token_addresses={{sol_address}}&timeframe=24h",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "trade-statistics"],
+              "query": [
+                {
+                  "key": "token_addresses",
+                  "value": "{{sol_address}}"
+                },
+                {
+                  "key": "timeframe",
+                  "value": "24h"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Token Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/token-transactions?token_address={{sol_address}}&limit=50",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "token-transactions"],
+              "query": [
+                {
+                  "key": "token_address",
+                  "value": "{{sol_address}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "50"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Traders Leaderboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/traders/leaderboard?token_address={{sol_address}}&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "traders", "leaderboard"],
+              "query": [
+                {
+                  "key": "token_address",
+                  "value": "{{sol_address}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🏊 Pool Analysis",
+      "item": [
+        {
+          "name": "Find Pools for Token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/token-pool-search?token_address={{sol_address}}&limit=10",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "token-pool-search"],
+              "query": [
+                {
+                  "key": "token_address",
+                  "value": "{{sol_address}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Orca Pool Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/orca/pool?pool_address=POOL_ADDRESS_HERE",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "orca", "pool"],
+              "query": [
+                {
+                  "key": "pool_address",
+                  "value": "POOL_ADDRESS_HERE",
+                  "description": "Replace with actual pool address from token-pool-search"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pool Fee Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/orca/pools/fee-metrics?pool_address=POOL_ADDRESS_HERE&timeframe_days=7",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "orca", "pools", "fee-metrics"],
+              "query": [
+                {
+                  "key": "pool_address",
+                  "value": "POOL_ADDRESS_HERE",
+                  "description": "Replace with actual pool address"
+                },
+                {
+                  "key": "timeframe_days",
+                  "value": "7"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pool Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/solana/pool-transactions?pool_address=POOL_ADDRESS_HERE&limit=50",
+              "host": ["{{base_url}}"],
+              "path": ["solana", "pool-transactions"],
+              "query": [
+                {
+                  "key": "pool_address",
+                  "value": "POOL_ADDRESS_HERE",
+                  "description": "Replace with actual pool address"
+                },
+                {
+                  "key": "limit",
+                  "value": "50"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
