@@ -6,15 +6,6 @@
 
 Complete testing framework for the **Cambrian API** - A comprehensive Solana DeFi analytics platform. This repository provides Python clients, workflow demonstrations, and Postman collections for all major API endpoints.
 
-## 🌟 Features
-
-- **🔥 Token Discovery** - Find trending tokens by volume, price changes, and market metrics
-- **💰 Real-time Pricing** - Current prices, historical data, and OHLCV candlesticks  
-- **👛 Portfolio Tracking** - Wallet balance monitoring and historical analysis
-- **📊 Advanced Trading Analytics** - Buy/sell ratios, market sentiment analysis, and trading patterns
-- **🤖 Market Intelligence** - Automated sentiment classification (Bullish/Bearish/Neutral)
-- **🏊 Pool Analysis** - Liquidity pool metrics, APR calculations, and yield farming data
-- **🛠️ Production Ready** - Secure credential management and error handling
 
 ## 🚀 Quick Start
 
